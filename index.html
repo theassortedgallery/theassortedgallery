@@ -627,16 +627,18 @@ function showCheckout() {
     .join('');
 
   // Calculate total
-  let total = entries.reduce((acc, item) => acc + item.price * item.count, 0);
-  totalEl.textContent = `Total Payment: ₱${total.toFixed(2)}`;
+  let totalPayment = entries.reduce((acc, item) => acc + item.price * item.count, 0);
+  totalEl.textContent = `Total Payment: ₱${totalPayment.toFixed(2)}`;
 
   // Pre-fill Google Form link
   const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSemgnUku-wrSiqwwA5-0BqVRjSLIhsJbJfj2xP4s5wMB3aO0g/viewform?usp=pp_url";
-  const formEntryItems = entries
-    .map(item => `${item.name} x${item.count} — ₱${(item.price * item.count).toFixed(2)}`)
-    .join("%0A"); // line break for Google Form
 
-  const formEntryTotal = encodeURIComponent(`Total: ₱${total.toFixed(2)}`);
+  // Encode each line properly
+  const formEntryItems = entries
+    .map(item => encodeURIComponent(`${item.name} x${item.count} — ₱${(item.price * item.count).toFixed(2)}`))
+    .join("%0A");
+
+  const formEntryTotal = encodeURIComponent(`Total: ₱${totalPayment.toFixed(2)}`);
 
   const formLink = document.getElementById("form-link");
   formLink.href = `${formBase}&entry.466455746=${formEntryItems}%0A${formEntryTotal}`;
@@ -646,6 +648,7 @@ function showCheckout() {
   setTimeout(() => checkoutModal.classList.add("show"), 10);
   checkoutModal.setAttribute("aria-hidden", "false");
 }
+
 // Add this right after showCheckout()
 function closeCheckout() {
   checkoutModal.classList.remove("show");
