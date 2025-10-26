@@ -376,25 +376,38 @@ button:disabled {background:#ccc; cursor:not-allowed;}
 <div id="checkout-modal" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="modal-content">
     <button class="modal-close" onclick="closeCheckout()">✖</button>
-    <h3>🛍️ Order Summary</h3>
-    <div id="checkout-summary-container">
-      <div id="checkout-summary"></div>
-      <div id="checkout-total">Total Payment: ₱0.00</div>
-    </div>
-    <h4>💸 GCash Payment</h4>
+    <h3>💸 Checkout</h3>
+    <div id="checkout-total">Total Payment: ₱0.00</div>
+
+    <h4>💳 GCash Payment</h4>
     <p>
       Please send your payment to:<br>
       <strong>📱 09351140013</strong><br>
       <strong>👤 Maica Baldesancho</strong>
     </p>
-    <p>✅ Thank you for shopping! Please fill out the order form below:</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSemgnUku-wrSiqwwA5-0BqVRjSLIhsJbJfj2xP4s5wMB3aO0g/viewform?usp=pp_url&entry.466455746=" 
-   target="_blank" 
-   id="form-link"
-   style="display:inline-block; background:#a67c52; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-size:0.9rem; transition: background 0.2s;">
-   📝 Open Order Form
-</a>
-    <button onclick="closeCheckout()">Close</button>
+
+    <h4>📝 Your Details</h4>
+    <form id="order-form">
+      <label>
+        Name:<br>
+        <input type="text" id="customer-name" required style="width:100%; padding:6px; margin:4px 0; border-radius:6px; border:1px solid #ccc;">
+      </label>
+      <label>
+        Mobile Number:<br>
+        <input type="text" id="customer-mobile" required style="width:100%; padding:6px; margin:4px 0; border-radius:6px; border:1px solid #ccc;">
+      </label>
+      <label>
+        Address:<br>
+        <textarea id="customer-address" required style="width:100%; padding:6px; margin:4px 0; border-radius:6px; border:1px solid #ccc;"></textarea>
+      </label>
+      <label>
+        Note:<br>
+        <textarea id="customer-note" style="width:100%; padding:6px; margin:4px 0; border-radius:6px; border:1px solid #ccc;"></textarea>
+      </label>
+      <button type="submit" style="background:#a67c52; color:white; width:100%; margin-top:10px;">Submit Order</button>
+    </form>
+
+    <button onclick="closeCheckout()" style="margin-top:10px; padding:8px 14px; border-radius:8px; background:#555; color:#fff; cursor:pointer;">Close</button>
   </div>
 </div>
 
@@ -611,52 +624,77 @@ toggleSidebarBtn.addEventListener("click", ()=>{
 });
 
 // Checkout Modal
+// Checkout Modal
 const checkoutModal = document.getElementById("checkout-modal");
 const checkoutBtn = document.getElementById("checkout-btn");
 checkoutBtn.addEventListener("click", ()=>{ showCheckout(); });
 
 function showCheckout() {
-  const summary = document.getElementById("checkout-summary");
-  const totalEl = document.getElementById("checkout-total");
   const entries = Object.values(cart);
   if(entries.length === 0) return;
 
-  // Build order summary for modal
-  summary.innerHTML = entries
-    .map(item => `<p>${item.name} x${item.count} — ₱${(item.price * item.count).toFixed(2)}</p>`)
-    .join('');
-
-  // Calculate total
   let totalPayment = entries.reduce((acc, item) => acc + item.price * item.count, 0);
+  const totalEl = document.getElementById("checkout-total");
   totalEl.textContent = `Total Payment: ₱${totalPayment.toFixed(2)}`;
 
-  // Pre-fill Google Form link
-  const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSemgnUku-wrSiqwwA5-0BqVRjSLIhsJbJfj2xP4s5wMB3aO0g/viewform?usp=pp_url";
-
-  // Encode each line properly
-  const formEntryItems = entries
-    .map(item => encodeURIComponent(`${item.name} x${item.count} — ₱${(item.price * item.count).toFixed(2)}`))
-    .join("%0A");
-
-  const formEntryTotal = encodeURIComponent(`Total: ₱${totalPayment.toFixed(2)}`);
-
-  const formLink = document.getElementById("form-link");
-  formLink.href = `${formBase}&entry.466455746=${formEntryItems}%0A${formEntryTotal}`;
-
-  // Show modal
   checkoutModal.style.display = "flex";
   setTimeout(() => checkoutModal.classList.add("show"), 10);
   checkoutModal.setAttribute("aria-hidden", "false");
 }
 
-// Add this right after showCheckout()
 function closeCheckout() {
   checkoutModal.classList.remove("show");
   checkoutModal.setAttribute("aria-hidden", "true");
   setTimeout(() => {
     checkoutModal.style.display = "none";
-  }, 250); // matches your CSS transition
+  }, 250);
 }
+// Handle order form submission
+document.getElementById("order-form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("customer-name").value;
+  const mobile = document.getElementById("customer-mobile").value;
+  const address = document.getElementById("customer-address").value;
+  const note = document.getElementById("customer-note").value;
+
+  const entries = Object.values(cart);
+  if(entries.length === 0) return;
+
+  // Build order summary string
+  const orderSummary = entries
+    .map(item => `${item.name} x${item.count} — ₱${(item.price * item.count).toFixed(2)}`)
+    .join("\n");
+
+  const totalPayment = entries.reduce((acc, item) => acc + item.price * item.count, 0);
+
+  // Google Form pre-fill URL
+  const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSemgnUku-wrSiqwwA5-0BqVRjSLIhsJbJfj2xP4s5wMB3aO0g/formResponse";
+
+  // Replace entry IDs with your actual Google Form field entry numbers
+  const formData = new FormData();
+  formData.append("entry.922959490", name);          // Name field
+  formData.append("entry.2014461761", mobile);        // Mobile
+  formData.append("entry.325269226", address);       // Address
+  formData.append("entry.1096533715", note);          // Note
+  formData.append("entry.466455746", orderSummary + `\nTotal: ₱${totalPayment.toFixed(2)}`); // Order summary + total
+
+  // Submit directly to Google Form (no new tab)
+  fetch(formBase, {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  }).then(() => {
+    alert("✅ Order received! Thank you for shopping.");
+    cart = {};
+    renderCart();
+    closeCheckout();
+  }).catch(err => {
+    console.error(err);
+    alert("Failed to submit order. Please try again.");
+  });
+});
+
 // Initialize
 renderCategories();
 renderProducts();
