@@ -422,7 +422,7 @@ button:disabled {background:#ccc; cursor:not-allowed;}
 
 <script>
 // Categories
-const categories = ["ALL","BISCUITS & COOKIES","CHOCOLATES & SWEETS","TEA & BEVERAGES","DATES & MIDDLE EASTERN DELIGHTS","ELECTRONICS & ACCESSORIES","HEALTHY SNACKS & GRAINS","PERSONAL CARE & HOME","SPREADS & NUT BUTTERS","SCENTS & FRAGRANCES"];
+const categories = ["ALL","BISCUITS & COOKIES","CHOCOLATES & SWEETS","TEA & BEVERAGES","DATES & MIDDLE EASTERN DELIGHTS","ELECTRONICS & ACCESSORIES","HEALTHY SNACKS & GRAINS","PERSONAL CARE & HOME","SPREADS & NUT BUTTERS","SCENTS & FRAGRANCES", "COMING SOON"];
 function renderCategories(){
   const ul = document.getElementById("category-list");
   ul.innerHTML = categories.map(cat=>`<li onclick="filterCategory('${cat}')" class="${cat==='ALL'?'active':''}">${cat}</li>`).join('');
@@ -439,16 +439,16 @@ function filterCategory(cat){
 
 // Products
 const products = [
-{ category: "BISCUITS & COOKIES", name: "AMERICAN PREMIUM BUTTER COOKIE 454G", price: 339, qty: 2, image: "AMERICAN PREMIUM BUTTER COOKIE 454G.jpeg" },
-  { category: "BISCUITS & COOKIES", name: "AMERICAN HERSHEY CHOCO COOKIES 454G", price: 349, qty: 3, image: "AMERICAN HERSHEY CHOCO COOKIES 454G.jpeg" },
-  { category: "BISCUITS & COOKIES", name: "AMERICAN HERSHEY DARK CHOCO COOKIES 454G", price: 349, qty: 2, image: "AMERICAN HERSHEY DARK CHOCO COOKIES 454G.jpeg" },
+{ category: "BISCUITS & COOKIES", name: "AMERICAN PREMIUM BUTTER COOKIE 454G", price: 339, qty: 1, image: "AMERICAN PREMIUM BUTTER COOKIE 454G.jpeg" },
+  { category: "BISCUITS & COOKIES", name: "AMERICAN HERSHEY CHOCO COOKIES 454G", price: 349, qty: 2, image: "AMERICAN HERSHEY CHOCO COOKIES 454G.jpeg" },
+  { category: "BISCUITS & COOKIES", name: "AMERICAN HERSHEY DARK CHOCO COOKIES 454G", price: 349, qty: 1, image: "AMERICAN HERSHEY DARK CHOCO COOKIES 454G.jpeg" },
   { category: "BISCUITS & COOKIES", name: "LOTUS BISCOFF 250G", price: 189, qty: 13, image: "LOTUS BISCOFF 250G.jpeg" },
   { category: "BISCUITS & COOKIES", name: "CHIPS AHOY 128GX3", price: 245, qty: 3, image: "CHIPS AHOY 128Gx3.jpeg" },
   { category: "BISCUITS & COOKIES", name: "BISKREM CARAMEL BISCUIT", price: 199, qty: 2, image: "BISKREM CARAMEL BISCUIT.jpeg" },
   { category: "BISCUITS & COOKIES", name: "BISKREM CHOCO BISCUIT", price: 199, qty: 2, image: "BISKREM CHOCO BISCUIT.jpeg" },
-  { category: "BISCUITS & COOKIES", name: "MCVITES DIGESTIVE DARK", price: 199, qty: 5, image: "MCVITES DIGESTIVE DARK.jpeg" },
-  { category: "BISCUITS & COOKIES", name: "MCVITES DIGESTIVE CHOCO", price: 189, qty: 5, image: "MCVITES DIGESTIVE CHOCO.jpeg" },
-  { category: "BISCUITS & COOKIES", name: "DIGESTIVE ORIGINAL", price: 149, qty: 4, image: "DIGESTIVE ORIGINAL.png" },
+  { category: "BISCUITS & COOKIES", name: "MCVITES DIGESTIVE DARK", price: 199, qty: 4, image: "MCVITES DIGESTIVE DARK.jpeg" },
+  { category: "BISCUITS & COOKIES", name: "MCVITES DIGESTIVE CHOCO", price: 189, qty: 4, image: "MCVITES DIGESTIVE CHOCO.jpeg" },
+  { category: "BISCUITS & COOKIES", name: "DIGESTIVE ORIGINAL", price: 149, qty: 2, image: "DIGESTIVE ORIGINAL.png" },
   { category: "BISCUITS & COOKIES", name: "MCVITES DIGESTIVE BISCUIT CHOCO", price: 230, qty: 2, image: "MCVITES DIGESTIVE BISCUIT CHOCO.jpeg" },
   { category: "BISCUITS & COOKIES", name: "MCVITES DIGESTIVE BISCUIT VANILLA", price: 230, qty: 2, image: "MCVITES DIGESTIVE BISCUIT VANILLA.jpeg" },
   { category: "BISCUITS & COOKIES", name: "OREO ORIGINAL", price: 249, qty: 2, image: "OREO ORIGINAL.jpg" },
@@ -459,8 +459,8 @@ const products = [
   { category: "CHOCOLATES & SWEETS", name: "MALTESERS 35GX4", price: 199, qty: 7, image: "MALTESERS 35GX4.jpg" },
   { category: "CHOCOLATES & SWEETS", name: "M&MS CHOCO 45GX4", price: 199, qty: 5, image: "M&MS CHOCO 45GX4.jpg" },
   { category: "CHOCOLATES & SWEETS", name: "M&MS PEANUT 45GX4", price: 199, qty: 3, image: "M&MS PEANUT 45GX4.jpg" },
-  { category: "CHOCOLATES & SWEETS", name: "PEPERO ASSORTED 32GX4(3ALMOND + 1CHOCO)", price: 205, qty: 8, image: "PEPERO ASSORTED 1.jpeg" },
-  { category: "CHOCOLATES & SWEETS", name: "PEPERO ASSORTED 32GX4(3ALMOND + 1ORIGINAL)", price: 205, qty: 7, image: "PEPERO ASSORTED 2.jpeg" },
+  { category: "CHOCOLATES & SWEETS", name: "PEPERO ASSORTED 32GX4(3ALMOND + 1CHOCO)", price: 205, qty: 7, image: "PEPERO ASSORTED 1.jpeg" },
+  { category: "CHOCOLATES & SWEETS", name: "PEPERO ASSORTED 32GX4(3ALMOND + 1ORIGINAL)", price: 205, qty: 6, image: "PEPERO ASSORTED 2.jpeg" },
   { category: "CHOCOLATES & SWEETS", name: "TWIX MINIATURE 150GX2", price: 379, qty: 2, image: "TWIX MINIATURE 150Gx2.jpeg" },
   { category: "CHOCOLATES & SWEETS", name: "MARS MINIATURE 150GX2", price: 305, qty: 2, image: "MARS MINIATURE 150Gx2.jpeg" },
   { category: "CHOCOLATES & SWEETS", name: "RITTER BUTTER BISCUIT 100G", price: 159, qty: 11, image: "RITTER BUTTER BISCUIT 100G.jpeg" },
@@ -486,14 +486,14 @@ const products = [
   { category: "ELECTRONICS & ACCESSORIES", name: "SONNY HEADPHONE_BLUE", price: 2099, qty: 1, image: "SONNY HEADPHONE_BLUE.jpg" },
   { category: "ELECTRONICS & ACCESSORIES", name: "SONNY HEADPHONE_YELLOW", price: 2099, qty: 0, image: "SONNY HEADPHONE_YELLOW.jpg" },
   { category: "ELECTRONICS & ACCESSORIES", name: "SONNY HEADPHONE_BEIGE", price: 2099, qty: 0, image: "SONNY HEADPHONE_BEIGE.jpg" },
-  { category: "HEALTHY SNACKS & GRAINS", name: "GRANOLA NUTS & HONEY 300G", price: 179, qty: 8, image: "GRANOLA NUTS & HONEY 300G.jpeg" },
-  { category: "HEALTHY SNACKS & GRAINS", name: "GRANOLA TROPICAL FRUITS 300G", price: 179, qty: 12, image: "GRANOLA TROPICAL FRUITS 300G.jpeg" },
-  { category: "HEALTHY SNACKS & GRAINS", name: "GRANOLA DRIED FRUITS 300G", price: 179, qty: 10, image: "GRANOLA DRIED FRUITS 300G.png" },
-  { category: "HEALTHY SNACKS & GRAINS", name: "GRANOLA FOREST FRUIT 300G", price: 195, qty: 14, image: "GRANOLA FOREST FRUIT 300G.jpeg" },
-  { category: "HEALTHY SNACKS & GRAINS", name: "CRANBERRY NUT BAR", price: 59, qty: 18, image: "CRANBERRY NUT BAR.jpeg" },
-  { category: "HEALTHY SNACKS & GRAINS", name: "ALMOND NUT BAR", price: 59, qty: 18, image: "ALMOND NUT BAR.jpeg" },
-  { category: "HEALTHY SNACKS & GRAINS", name: "PEACAN NUT BAR", price: 59, qty: 19, image: "PEACAN NUT BAR.jpeg" },
-  { category: "HEALTHY SNACKS & GRAINS", name: "SUPERNUTS", price: 59, qty: 7, image: "SUPERNUTS.jpeg" },
+  { category: "HEALTHY SNACKS & GRAINS", name: "GRANOLA NUTS & HONEY 300G", price: 179, qty: 6, image: "GRANOLA NUTS & HONEY 300G.jpeg" },
+  { category: "HEALTHY SNACKS & GRAINS", name: "GRANOLA TROPICAL FRUITS 300G", price: 179, qty: 10, image: "GRANOLA TROPICAL FRUITS 300G.jpeg" },
+  { category: "HEALTHY SNACKS & GRAINS", name: "GRANOLA DRIED FRUITS 300G", price: 179, qty: 7, image: "GRANOLA DRIED FRUITS 300G.png" },
+  { category: "HEALTHY SNACKS & GRAINS", name: "GRANOLA FOREST FRUIT 300G", price: 195, qty: 7, image: "GRANOLA FOREST FRUIT 300G.jpeg" },
+  { category: "HEALTHY SNACKS & GRAINS", name: "CRANBERRY NUT BAR", price: 59, qty: 17, image: "CRANBERRY NUT BAR.jpeg" },
+  { category: "HEALTHY SNACKS & GRAINS", name: "ALMOND NUT BAR", price: 59, qty: 17, image: "ALMOND NUT BAR.jpeg" },
+  { category: "HEALTHY SNACKS & GRAINS", name: "PEACAN NUT BAR", price: 59, qty: 16, image: "PEACAN NUT BAR.jpeg" },
+  { category: "HEALTHY SNACKS & GRAINS", name: "SUPERNUTS", price: 59, qty: 2, image: "SUPERNUTS.jpeg" },
   { category: "PERSONAL CARE & HOME", name: "CANOLA OIL 1.5L", price: 190, qty: 4, image: "CANOLA OIL 1.5L.jpeg" },
   { category: "PERSONAL CARE & HOME", name: "COMFORT 3.9L", price: 449, qty: 2, image: "COMFORT 3.9L.jpg" },
   { category: "PERSONAL CARE & HOME", name: "FAIRY DISWASHING LAVANDER 600ML B1T1", price: 245, qty: 1, image: "FAIRY DISWASHING LAVANDER 600ML B1T1.jpeg" },
@@ -505,17 +505,17 @@ const products = [
   { category: "SPREADS & NUT BUTTERS", name: "NUTELLA SPREAD 440G", price: 355, qty: 4, image: "NUTELLA SPREAD 440G.jpeg" },
   { category: "SPREADS & NUT BUTTERS", name: "NUTELLA SPEAD 825G", price: 580, qty: 1, image: "NUTELLA SPEAD 825G.jpeg" },
   { category: "SPREADS & NUT BUTTERS", name: "NUTELLA SPREAD 750G", price: 580, qty: 2, image: "NUTELLA SPREAD 750G.webp" },
-  { category: "SPREADS & NUT BUTTERS", name: "PEANUT BUTTER CREAMY 1KG", price: 249, qty: 6, image: "PEANUT BUTTER CREAMY 1KG.jpeg" },
-  { category: "SPREADS & NUT BUTTERS", name: "PEANUT BUTTER CRUNCHY 1KG", price: 249, qty: 6, image: "PEANUT BUTTER CRUNCHY 1KG.jpeg" },
+  { category: "SPREADS & NUT BUTTERS", name: "PEANUT BUTTER CREAMY 1KG", price: 249, qty: 3, image: "PEANUT BUTTER CREAMY 1KG.jpeg" },
+  { category: "SPREADS & NUT BUTTERS", name: "PEANUT BUTTER CRUNCHY 1KG", price: 249, qty: 2, image: "PEANUT BUTTER CRUNCHY 1KG.jpeg" },
   { category: "TEA & BEVERAGES", name: "KARAK TEA ORIGINAL 500G", price: 449, qty: 2, image: "KARAK TEA ORIGINAL 500G.jpeg" },
   { category: "TEA & BEVERAGES", name: "KARAK TEA CARDAMOM 500G", price: 449, qty: 3, image: "KARAK TEA CARDAMOM 500G.jpeg" },
   { category: "TEA & BEVERAGES", name: "KARAK TEA GINGER 500G", price: 449, qty: 1, image: "KARAK TEA GINGER 500G.jpeg" },
   { category: "TEA & BEVERAGES", name: "SWEET HONEY TEA", price: 109, qty: 1, image: "SWEET HONEY TEA.jpeg" },
-  { category: "TEA & BEVERAGES", name: "HIBISCUS TEA", price: 99, qty: 5, image: "HIBISCUS TEA.jpeg" },
+  { category: "TEA & BEVERAGES", name: "HIBISCUS TEA", price: 99, qty: 2, image: "HIBISCUS TEA.jpeg" },
   { category: "TEA & BEVERAGES", name: "MOROCCAN MINT TEA", price: 99, qty: 1, image: "MOROCCAN MINT TEA.jpeg" },
-  { category: "TEA & BEVERAGES", name: "DETOX TEA", price: 109, qty: 4, image: "DETOX TEA.jpeg" },
-  { category: "TEA & BEVERAGES", name: "CAMOMILE TEA", price: 99, qty: 2, image: "CAMOMILE TEA.jpeg" },
-  { category: "TEA & BEVERAGES", name: "GREEN TEA LEMON HONEY", price: 99, qty: 4, image: "GREEN TEA LEMON HONEY.jpeg" },
+  { category: "TEA & BEVERAGES", name: "DETOX TEA", price: 109, qty: 2, image: "DETOX TEA.jpeg" },
+  { category: "TEA & BEVERAGES", name: "CAMOMILE TEA", price: 99, qty: 0, image: "CAMOMILE TEA.jpeg" },
+  { category: "TEA & BEVERAGES", name: "GREEN TEA LEMON HONEY", price: 99, qty: 3, image: "GREEN TEA LEMON HONEY.jpeg" },
 { category: "SCENTS & FRAGRANCES", name: "JB MARSHMALLOW PERFUME", price: 2500, qty: 0, image: "JB MARSHMALLOW PERFUME.png" },
 { category: "SCENTS & FRAGRANCES", name: "A THOUSAND WISHES", price: 139, qty: 1, image: "A THOUSAND WISHES.png" },
 { category: "SCENTS & FRAGRANCES", name: "SUNSHINE LEMONS", price: 139, qty: 1, image: "SUNSHINE LEMONS.png" },
@@ -524,8 +524,18 @@ const products = [
 { category: "SCENTS & FRAGRANCES", name: "INTO THE NIGHT", price: 139, qty: 3, image: "INTO THE NIGHT.png" },
 { category: "SCENTS & FRAGRANCES", name: "BLACK CHERRY MERLOT", price: 139, qty: 1, image: "BLACK CHERRY MERLOT.png" },
 { category: "SCENTS & FRAGRANCES", name: "WARM VANILLA SUGAR", price: 139, qty: 1, image: "WARM VANILLA SUGAR.png" },
-{ category: "SCENTS & FRAGRANCES", name: "LAVENDER CLOUD", price: 139, qty: 1, image: "LAVENDER CLOUD.png" }
-
+{ category: "SCENTS & FRAGRANCES", name: "LAVENDER CLOUD", price: 139, qty: 1, image: "LAVENDER CLOUD.png" },
+{ category: "COMING SOON", name: "LATTAFA AMEERAT AL ARAB EAU DE PARFUM", description: "An elegant oriental fragrance with rich floral and amber notes, capturing the essence of sophistication.", price: 0, qty: 0, image: "LATTAFA AMEERAT AL ARAB EAU DE PARFUM.png" },
+{ category: "COMING SOON", name: "LATTAFA AMEERAT AL ARAB IMPERIUM", description: "A luxurious and royal scent blending warm spices and deep woods for a bold, lasting impression.", price: 0, qty: 0, image: "LATTAFA AMEERAT AL ARAB IMPERIUM.png" },
+{ category: "COMING SOON", name: "LATTAFA AMEERAT AL ARAB PRIVE ROSE", description: "A romantic mix of rose petals and musk with a sweet oriental touch, perfect for special occasions.", price: 0, qty: 0, image: "LATTAFA AMEERAT AL ARAB PRIVE ROSE.png" },
+{ category: "COMING SOON", name: "LATTAFA AMEERAT AL ARAB BLACK EAU DE PARFUM", description: "A mysterious and sensual fragrance with creamy vanilla, amber, and dark floral notes.", price: 0, qty: 0, image: "LATTAFA AMEERAT AL ARAB BLACK EAU DE PARFUM.png" },
+{ category: "COMING SOON", name: "LATTAFA KHAMRAH ORIGINAL", description: "A rich gourmand fragrance with cinnamon, vanilla, and warm amber — powerful and long-lasting.", price: 0, qty: 0, image: "LATTAFA KHAMRAH ORIGINAL.png" },
+{ category: "COMING SOON", name: "LATTAFA KHAMRAH QAHWA", description: "A captivating blend of coffee, cinnamon, and caramel — a unique twist on the Khamrah signature scent.", price: 0, qty: 0, image: "LATTAFA KHAMRAH QAHWA.png" },
+{ category: "COMING SOON", name: "LATTAFA LIAM BLUE SHINE", description: "A vibrant and refreshing perfume with aquatic notes and subtle citrus undertones for everyday wear.", price: 0, qty: 0, image: "LATTAFA LIAM BLUE SHINE.png" },
+{ category: "COMING SOON", name: "LATTAFA YARA CANDY", description: "A playful and sweet perfume bursting with fruity and sugary notes, ideal for youthful energy.", price: 0, qty: 0, image: "LATTAFA YARA CANDY.png" },
+{ category: "COMING SOON", name: "LATTAFA YARA EAU DE PARFUM", description: "A soft, feminine scent with floral, fruity, and musky notes — timeless and elegant.", price: 0, qty: 0, image: "LATTAFA YARA EAU DE PARFUM.png" },
+{ category: "COMING SOON", name: "LATTAFA YARA MOI", description: "An enchanting combination of jasmine, vanilla, and creamy woods — sophisticated yet subtle.", price: 0, qty: 0, image: "LATTAFA YARA MOI.png" },
+{ category: "COMING SOON", name: "LATTAFA YARA TOUS", description: "A modern and chic fragrance blending soft florals and warm amber for a confident aura.", price: 0, qty: 0, image: "LATTAFA YARA TOUS.png" }
 
 
 ];
